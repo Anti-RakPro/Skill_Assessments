@@ -5,10 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4bf74ab5-0b52-4a83-9b00-2bb466ffca4d" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/TestProvider/FetchTest.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/UI/Button.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Header/Header.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Header/Header.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/TestProvider/FetchTest.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/TestProvider/FetchTest.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Tests/Tests.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Tests/Tests.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Tests/Tests.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Tests/Tests.module.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -76,6 +78,8 @@
       <workItem from="1687358402450" duration="1140000" />
       <workItem from="1687383881896" duration="593000" />
       <workItem from="1687422667050" duration="6928000" />
+      <workItem from="1687464487949" duration="90000" />
+      <workItem from="1687498411610" duration="10824000" />
     </task>
     <servers />
   </component>
