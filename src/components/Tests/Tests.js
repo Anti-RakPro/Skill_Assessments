@@ -6,7 +6,13 @@ import {useState,useEffect} from "react";
 // FetchTest()
 let allQuestions = ''
 
+// this fun takes 15 random questions from all list
+function chooseRandom(arr) {
+    return arr.slice(0,15)
+}
 
+
+// this fun transforms huge json str go obj, for later use
 function reformatToArr(str){
     console.log(str)
 
@@ -32,86 +38,63 @@ function reformatToArr(str){
 
 
         let splitingAnswersStr = answersPart
+        console.log('all questions',splitingAnswersStr )
         for(let i = 0; i < 6; i++){
 
             let nextSearch = splitingAnswersStr.slice(5).search(/- . .|- .x./gm)
-            console.log(nextSearch,splitingAnswersStr,splitingAnswersStr.slice(5))
+            console.log(nextSearch,splitingAnswersStr)
+
+
             if (nextSearch !== -1){
-
-                // let referenceIndex = splitingAnswersStr.search(['Reference'])
-                // if(referenceIndex !== -1){
+                const potentialAnswer = splitingAnswersStr.slice(0, nextSearch +5)
+                const isCodeInAnswer = potentialAnswer.search('```js')
+                if(isCodeInAnswer !== -1){
                     answers.push({
-                        answer: splitingAnswersStr.slice(0, nextSearch +5)
+                        answer: potentialAnswer.slice(0, isCodeInAnswer),
+                        codeAfterAnswer: potentialAnswer.slice( isCodeInAnswer)
                     })
-                // } else {
-                //     answers.push({
-                //         answer: splitingAnswersStr.slice(0, referenceIndex)
-                //     })
-                //     references.push(splitingAnswersStr.slice(referenceIndex,nextSearch +5))
-                // }
-
+                } else{
+                    answers.push({
+                        answer: potentialAnswer,
+                        codeAfterAnswer: null
+                    })
+                }
                 splitingAnswersStr = splitingAnswersStr.slice(nextSearch +5)
                 console.log('after cut',splitingAnswersStr)
             } else{
-                let referenceIndex = splitingAnswersStr.search(['Reference'])
-                if(referenceIndex !== -1){
-                    answers.push({
-                        answer: splitingAnswersStr.slice(0,referenceIndex -1)
 
+                // TODO erors is last answer
+                let isReferenceInAnswer = splitingAnswersStr.search(['Reference'])
+                let potentialAnswer = splitingAnswersStr.slice(0, nextSearch +5)
+                const isCodeInAnswer = potentialAnswer.search('```js')
+
+                if(isReferenceInAnswer !== -1) {
+                    references.push(splitingAnswersStr.slice(isReferenceInAnswer - 1))
+                    potentialAnswer = splitingAnswersStr.slice(0,isReferenceInAnswer - 1)
+
+                }
+
+
+                if(isCodeInAnswer !== -1){
+                    answers.push({
+                        answer: potentialAnswer.slice(0, isCodeInAnswer),
+                        codeAfterAnswer: potentialAnswer.slice( isCodeInAnswer)
                     })
-                    references.push(splitingAnswersStr.slice(referenceIndex -1))
                 } else{
                     answers.push({
-                        answer: splitingAnswersStr
+                        answer: potentialAnswer,
+                        codeAfterAnswer: null
                     })
                 }
                 break
             }
+
             console.log(i,nextSearch,answers)
         }
         result.answers = answers
         result.reference = references
         
-        // console.log(indexQuestion, str, questionPart, isCodeInQuestion)
-        // console.log(isCodeInQuestion,questionPart, codeAfterQuestion)
 
-        // let correntQuestionSection = str.split('?')
-        // const numOfAnswers = str.match(/- . .|- .x./gm).length
-        // console.log(numOfAnswers)
-        // if (numOfAnswers !== 4){
-        //     console.log(str)
-        // }
-        
-
-        // const question =  `${correntQuestionSection[0]} ?`
-        // console.log('question', question)
-        // const ather = correntQuestionSection[1]
-        // console.log('ather', ather)
-        // const answers = ather.split(/- . .|- .x./gm)
-        // console.log('answers', answers)
-        // // may contain some code
-        // const q0 = answers[0]
-
-
-        // return{
-        //     question: question,
-        //     codeAfterQuestion: null,
-        //     answers:{
-        //         one:'',
-        //         oneCode:null,
-        //         oneIsRight: false,
-        //         two:'',
-        //         twoCode: null,
-        //         twoIsRight: false,
-        //         three: '',
-        //         threeCode: null,
-        //         threeIsRight: false,
-        //         four: '',
-        //         fourCode: null,
-        //         fourIsRight: false,
-        //     },
-        //     ather: ather
-        // }
         console.log(result)
         return result
     })
