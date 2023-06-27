@@ -1,4 +1,20 @@
 .main {
-    width: 100px;
+
     height: 700px;
+}
+
+.test-title {
+    text-align: center;
+    color: #fff;
+    background-color: #3C3F41 ;
+    height: 50px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.test-question{
+
 }

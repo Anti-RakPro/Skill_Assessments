@@ -1,6 +1,6 @@
 import styles from './Tests.module.css'
 import FetchTest from "../../TestProvider/FetchTest";
-import {useState,useEffect} from "react";
+import {useState,useEffect,useReducer} from "react";
 
 
 // FetchTest()
@@ -14,7 +14,7 @@ function chooseRandom(arr) {
 
 // this fun transforms huge json str go obj, for later use
 function reformatToArr(str){
-    console.log(str)
+    // console.log(str)
 
 
     const arr = str.replace(/[\r\n]/gm, '').split('####').slice(1).map(str =>{
@@ -38,11 +38,11 @@ function reformatToArr(str){
 
 
         let splitingAnswersStr = answersPart
-        console.log('all questions',splitingAnswersStr )
+        // console.log('all questions',splitingAnswersStr )
         for(let i = 0; i < 6; i++){
 
             let nextSearch = splitingAnswersStr.slice(5).search(/- . .|- .x./gm)
-            console.log(nextSearch,splitingAnswersStr)
+            // console.log(nextSearch,splitingAnswersStr)
 
 
             if (nextSearch !== -1){
@@ -60,7 +60,7 @@ function reformatToArr(str){
                     })
                 }
                 splitingAnswersStr = splitingAnswersStr.slice(nextSearch +5)
-                console.log('after cut',splitingAnswersStr)
+                // console.log('after cut',splitingAnswersStr)
             } else{
 
                 // TODO erors is last answer
@@ -89,13 +89,13 @@ function reformatToArr(str){
                 break
             }
 
-            console.log(i,nextSearch,answers)
+            // console.log(i,nextSearch,answers)
         }
         result.answers = answers
         result.reference = references
         
 
-        console.log(result)
+        // console.log(result)
         return result
     })
     
@@ -104,14 +104,23 @@ function reformatToArr(str){
 
 }
 
+function setTest(){
+
+}
+const initialArg = {}
+
+function postReducer(state, action){
+
+}
 
 
 function Tests(){
 
     const [tests, setTests] = useState('')
+    const [test, setTest] = useReducer(postReducer,initialArg)
 
     useEffect(()=>{
-        console.log('start request')
+        // console.log('start request')
 
         const fetchTests = async () =>{
             const response = await fetch (
@@ -121,22 +130,26 @@ function Tests(){
 
             const blob = fetch(`https://api.github.com/repos/mrshahzeb7/linkedin-skill-assessments-quizzes/git/blobs/${responseData.sha}`)
                 .then(d=> d.json())
-                .then (d => atob(d.content))
-                .then (d => reformatToArr(d))
+                .then(d => atob(d.content))
+                .then(d => reformatToArr(d))
+                .then(arr => chooseRandom(arr))
+                .then(arr => setTests(arr))
+                .then(arr => console.log(arr))
 
-            console.log(blob)
-            const jsonToObj = async ()=>{
-                console.log(allQuestions)
-            }
+
         }
         fetchTests()
+
 
     },[])
 
 
+    console.log(tests)
 
-    return(<div className={styles.main} >
-            some tests
+    return(
+        <div className={styles.main} >
+            <p className={styles['test-title']}>JS Skill Assessment</p>
+            <div className={styles['test-question']}>{tests !== '' && tests[0].question}</div>
 
         </div>
     )
