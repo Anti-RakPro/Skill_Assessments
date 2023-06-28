@@ -6,11 +6,12 @@
   <component name="ChangeListManager">
     <list default="true" id="4bf74ab5-0b52-4a83-9b00-2bb466ffca4d" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Tests/Tests.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Tests/Tests.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Tests/Tests.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Tests/Tests.module.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/desing/web page plan.drawio" beforeDir="false" afterPath="$PROJECT_DIR$/src/desing/web page plan.drawio" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/desing/~$web page plan.drawio.bkp" beforeDir="false" afterPath="$PROJECT_DIR$/src/desing/~$web page plan.drawio.bkp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/desing/~$web page plan.drawio.dtmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -85,6 +86,8 @@
       <workItem from="1687671968586" duration="13256000" />
       <workItem from="1687765901040" duration="7244000" />
       <workItem from="1687866252530" duration="5713000" />
+      <workItem from="1687895351309" duration="157000" />
+      <workItem from="1687951349870" duration="11747000" />
     </task>
     <servers />
   </component>

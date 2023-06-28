@@ -16,5 +16,21 @@
 }
 
 .test-question{
+    margin: 20px 10px;
+}
 
+.test-answers{
+    background-color: #ecf0f6;
+    padding: 20px;
+}
+
+.test-answer{
+    display: block;
+    margin: 20px 0;
+}
+.separate-line{
+    backgroundColor: rgb(215,219,225);
+    height: 0;
+    width: 95%;
+    margin: 0 auto;
 }
