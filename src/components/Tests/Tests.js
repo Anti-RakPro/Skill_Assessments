@@ -1,6 +1,7 @@
 import styles from './Tests.module.css'
 import FetchTest from "../../TestProvider/FetchTest";
 import {useState, useEffect, useReducer} from "react";
+import Checkbox from "../../UI/Checkbox";
 
 
 
@@ -111,6 +112,37 @@ const initialArg = {
     reference: "[Reference Javascript Comparison Operators](https://www.w3schools.com/js/js_operators.asp)"
 }
 
+const defaultObj =
+    // TODO
+    {chosen: false, showGray: false, showGreen: false, showRed: false}
+
+function postCurrentAnswer(state, action){
+
+
+
+    if (action.type === 'check0'){
+        const result = [{...defaultObj, chosen: true, showGray: true} , defaultObj, defaultObj, defaultObj]
+        console.log('check0',result)
+        return result
+    }
+    if (action.type === 'check1'){
+        const result =[defaultObj, {...defaultObj, chosen: true,showGray: true}, defaultObj, defaultObj]
+        console.log('check1',result)
+        return result
+    }
+    if (action.type === 'check2'){
+        const result =[defaultObj, defaultObj, {...defaultObj, chosen: true,showGray: true}, defaultObj]
+        console.log('check2',result)
+        return result
+    }
+    if (action.type === 'check3'){
+        const result =[defaultObj, defaultObj, defaultObj, {...defaultObj, chosen: true,showGray: true}]
+        console.log('check3',result)
+        return result
+    }
+
+
+}
 
 
 
@@ -121,6 +153,10 @@ function Tests() {
 
     const [allTests, setAllTests] = useState('')
     const [test, setTest] = useReducer(postReducer, initialArg)
+
+    const [currentQuestion, setCurrentQuestion] = useState('')
+    const [currentAnswer, setCurrentAnswer] = useReducer(postCurrentAnswer, [defaultObj,defaultObj,defaultObj,defaultObj])
+
 
     function postReducer(state, action) {
         if (action.type === 'NEXT QUESTION') {
@@ -142,7 +178,7 @@ function Tests() {
             const fifteenQuestions = arr.slice(0, 15)
             setAllTests(fifteenQuestions)
             setTest({type: 'NEXT QUESTION'})
-            console.log('fifteenQuestions',fifteenQuestions)
+            // console.log('fifteenQuestions',fifteenQuestions)
 
             return arr.slice(0, 15)
         }
@@ -166,7 +202,7 @@ function Tests() {
     }, [])
 
 
-    console.log(allTests)
+    // console.log(allTests)
 
 
     const SeparateLine = () => (
@@ -179,13 +215,13 @@ function Tests() {
             <div className={styles['test-question']}>{test.question}</div>
             <div className={styles['test-answers']}>
 
-                <biv className={styles['test-answer']}>{test.answers[0].answer}</biv>
+                <div className={styles['test-answer']}><Checkbox obj={currentAnswer[0]} onChange={()=>{setCurrentAnswer({type: 'check0'})}} />{test.answers[0].answer}</div>
                 <SeparateLine/>
-                <biv className={styles['test-answer']}>{test.answers[1].answer}</biv>
+                <div className={styles['test-answer']}><Checkbox obj={currentAnswer[1]} onChange={()=>{setCurrentAnswer({type: 'check1'})}} />{test.answers[1].answer}</div>
                 <SeparateLine/>
-                <biv className={styles['test-answer']}>{test.answers[2].answer}</biv>
+                <div className={styles['test-answer']}><Checkbox obj={currentAnswer[2]} onChange={()=>{setCurrentAnswer({type: 'check2'})}} />{test.answers[2].answer}</div>
                 <SeparateLine/>
-                <biv className={styles['test-answer']}>{test.answers[3].answer}</biv>
+                <div className={styles['test-answer']}><Checkbox obj={currentAnswer[3]} onChange={()=>{setCurrentAnswer({type: 'check3'})}} />{test.answers[3].answer}</div>
             </div>
 
         </div>

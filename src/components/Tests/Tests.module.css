@@ -29,7 +29,7 @@
     margin: 20px 0;
 }
 .separate-line{
-    backgroundColor: rgb(215,219,225);
+    background-color: rgb(215,219,225, 0.9);
     height: 0;
     width: 95%;
     margin: 0 auto;
