@@ -1,0 +1,11 @@
+.customBtn{
+    min-height: 35px;
+    min-width: 80px;
+    padding: 0 10px;
+    border-radius: 20px;
+    background-color: #ecf0f6;
+    font-weight: 700;
+    color: gray;
+    border: unset;
+
+}

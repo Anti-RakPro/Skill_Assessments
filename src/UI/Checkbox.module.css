@@ -2,21 +2,25 @@
     display: inline-block ;
     height: 25px;
     width: 25px;
-    border: 1px solid #45494A;
+    border: 2px solid gray;
     border-radius: 50%;
     margin: 0 10px;
 }
 
 .showGray{
-    background-color: gray;
-    border: 1px solid gray;
+    height: 12px;
+    width: 12px;
+    border: 8px solid gray;
 }
 
 .showGreen{
-
-    border: 1px solid green;
+    height: 12px;
+    width: 12px;
+    border: 8px solid green;
 }
 
 .showRed{
-    border: 1px solid red;
+    height: 12px;
+    width: 12px;
+    border: 8px solid red;
 }

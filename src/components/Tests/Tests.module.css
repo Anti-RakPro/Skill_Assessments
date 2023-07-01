@@ -1,6 +1,7 @@
 .main {
+    position: relative;
 
-    height: 700px;
+
 }
 
 .test-title {
@@ -22,6 +23,7 @@
 .test-answers{
     background-color: #ecf0f6;
     padding: 20px;
+    padding-bottom: 8%;
 }
 
 .test-answer{

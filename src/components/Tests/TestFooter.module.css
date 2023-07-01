@@ -1,0 +1,22 @@
+.testFooterMain {
+
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 10%;
+    max-width: 100%;
+    min-width: calc(100% - 40px);
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    background-color: #fff;
+    padding-top: 20px;
+    /*border: 1px solid red;*/
+}
+
+.testFooterMain:after {
+    height: 10%;
+    width: 100%;
+    border: 5px solid black;
+}

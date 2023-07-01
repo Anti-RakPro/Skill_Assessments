@@ -2,6 +2,7 @@ import styles from './Tests.module.css'
 import FetchTest from "../../TestProvider/FetchTest";
 import {useState, useEffect, useReducer} from "react";
 import Checkbox from "../../UI/Checkbox";
+import TestFooter from "./TestFooter";
 
 
 
@@ -14,7 +15,7 @@ let allQuestions = ''
 
 // this fun transforms huge json str go obj, for later use
 function reformatToArr(str) {
-    // console.log(str)
+    console.log(str)
 
 
     const arr = str.replace(/[\r\n]/gm, '').split('####').slice(1).map(str => {
@@ -122,22 +123,22 @@ function postCurrentAnswer(state, action){
 
     if (action.type === 'check0'){
         const result = [{...defaultObj, chosen: true, showGray: true} , defaultObj, defaultObj, defaultObj]
-        console.log('check0',result)
+        // console.log('check0',result)
         return result
     }
     if (action.type === 'check1'){
         const result =[defaultObj, {...defaultObj, chosen: true,showGray: true}, defaultObj, defaultObj]
-        console.log('check1',result)
+        // console.log('check1',result)
         return result
     }
     if (action.type === 'check2'){
         const result =[defaultObj, defaultObj, {...defaultObj, chosen: true,showGray: true}, defaultObj]
-        console.log('check2',result)
+        // console.log('check2',result)
         return result
     }
     if (action.type === 'check3'){
         const result =[defaultObj, defaultObj, defaultObj, {...defaultObj, chosen: true,showGray: true}]
-        console.log('check3',result)
+        // console.log('check3',result)
         return result
     }
 
@@ -159,7 +160,7 @@ function Tests() {
 
 
     function postReducer(state, action) {
-        if (action.type === 'NEXT QUESTION') {
+        if (action.type === 'START') {
             return allTests[0]
         }
         if (action.type === 'ADD') {
@@ -177,7 +178,7 @@ function Tests() {
 
             const fifteenQuestions = arr.slice(0, 15)
             setAllTests(fifteenQuestions)
-            setTest({type: 'NEXT QUESTION'})
+            setTest({type: 'START'})
             // console.log('fifteenQuestions',fifteenQuestions)
 
             return arr.slice(0, 15)
@@ -223,6 +224,7 @@ function Tests() {
                 <SeparateLine/>
                 <div className={styles['test-answer']}><Checkbox obj={currentAnswer[3]} onChange={()=>{setCurrentAnswer({type: 'check3'})}} />{test.answers[3].answer}</div>
             </div>
+        <TestFooter  />
 
         </div>
     )

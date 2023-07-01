@@ -3,7 +3,7 @@ import classes from './Checkbox.module.css'
 
 
 function Checkbox ({obj, onChange}){
-console.log(obj)
+// console.log(obj)
 
     const clas = `${classes.checkbox} 
     ${obj.showGray === true && classes.showGray} 
@@ -12,11 +12,7 @@ console.log(obj)
 
     debugger
     return (
-        <React.Fragment>
             <div className={clas} onClick={onChange} />
-
-        </React.Fragment>
-
     )
 
 }
