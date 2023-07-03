@@ -163,12 +163,12 @@ function Tests() {
         if (action.type === 'START') {
             return allTests[0]
         }
-        if (action.type === 'ADD') {
-
-        }
-        if (action.type === 'ADD') {
-
-        }
+        // if (action.type === 'ADD') {
+        //
+        // }
+        // if (action.type === 'ADD') {
+        //
+        // }
     }
 
     useEffect(() => {
@@ -179,7 +179,7 @@ function Tests() {
             const fifteenQuestions = arr.slice(0, 15)
             setAllTests(fifteenQuestions)
             setTest({type: 'START'})
-            // console.log('fifteenQuestions',fifteenQuestions)
+            // console.log('fifteenQuestions',fifteenQuestions)/
 
             return arr.slice(0, 15)
         }
