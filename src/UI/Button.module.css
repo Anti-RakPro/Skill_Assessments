@@ -7,5 +7,10 @@
     font-weight: 700;
     color: gray;
     border: unset;
+}
 
+.LightsUp{
+    cursor: pointer;
+    background-color: rgb(12,89,194);
+    color: #fff;
 }
