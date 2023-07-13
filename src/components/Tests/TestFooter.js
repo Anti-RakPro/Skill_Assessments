@@ -12,7 +12,8 @@ function TestFooter(props){
         <div>Q Number, timer</div>
         <div>
 
-            <Button onSubmit={props.onSubmit} isSubmitLightsUp={props.isSubmitLightsUp}>Submit</Button>
+            <Button onClick={props.onNext} isLightsUp={props.isNextLightsUp}>Next</Button>
+            <Button onClick={props.onSubmit} isLightsUp={props.isSubmitLightsUp}>Submit</Button>
         </div>
     </div>
     )}

@@ -130,14 +130,16 @@ const defaultAnswerObj =
 
 let whichQuestion = 0
 const answerHistory = [NaN, NaN, NaN, NaN, NaN, NaN, NaN, NaN, NaN, NaN, NaN, NaN, NaN, NaN, NaN]
-
+let fifteenQuestions
+let answerHasBeenGiven = false
 
 
 
 function Tests() {
 
-    const [allTests, setAllTests] = useState('')
+    // const [allTests, setAllTests] = useState('')
     const [isSubmitLightsUp, setSubmitLightsUp] = useState(false)
+    const [isNextLightsUp, setNextLightsUp] = useState(false)
     // const [currentAnswerNumber, setCurrentAnswerNumber] = useState(0)
     const [currentAnswer, setCurrentAnswer] = useReducer(postCurrentAnswer,
         [defaultAnswerObj, defaultAnswerObj, defaultAnswerObj, defaultAnswerObj])
@@ -160,8 +162,8 @@ function Tests() {
             }
 
             // const fifteenQuestions = arr.slice(0, 15)
-            const fifteenQuestions = getRandomElementsFromArray(arr, 15)
-            setAllTests(fifteenQuestions)
+            fifteenQuestions = getRandomElementsFromArray(arr, 15)
+
             setTest({type: 'START'})
             // console.log('fifteenQuestions',fifteenQuestions)/
 
@@ -178,7 +180,6 @@ function Tests() {
                 .then(d => d.json())
                 .then(d => atob(d.content))
                 .then(d => reformatToArr(d))
-                // .then(arr => setAllTests(arr))
                 .then(arr => chooseQuestions(arr))
                 .catch(error => new Error(`something went wrong(${error})`))
         }
@@ -188,45 +189,64 @@ function Tests() {
 
     function postCurrentAnswer(state, action) {
 
+        if (action.type === 'SET AMOUNT') {
+            setSubmitLightsUp(false)
+            return  test.answers.map(()=>{
+                return defaultAnswerObj
+            })
+        }
+
         if (action.type === 'check0') {
-            const result = [{
-                ...defaultAnswerObj,
-                chosen: true,
-                showGray: true
-            }, defaultAnswerObj, defaultAnswerObj, defaultAnswerObj]
-            setSubmitLightsUp(true)
-            // console.log('check0',result)
-            return result
+            if (answerHasBeenGiven === false){
+                const result = [{
+                    ...defaultAnswerObj,
+                    chosen: true,
+                    showGray: true
+                }, defaultAnswerObj, defaultAnswerObj, defaultAnswerObj]
+                setSubmitLightsUp(true)
+                // console.log('check0',result)
+                return result
+            }
+            return state
         }
         if (action.type === 'check1') {
-            const result = [defaultAnswerObj, {
-                ...defaultAnswerObj,
-                chosen: true,
-                showGray: true
-            }, defaultAnswerObj, defaultAnswerObj]
-            setSubmitLightsUp(true)
-            // console.log('check1',result)
-            return result
+            if (answerHasBeenGiven === false){
+                const result = [defaultAnswerObj, {
+                    ...defaultAnswerObj,
+                    chosen: true,
+                    showGray: true
+                }, defaultAnswerObj, defaultAnswerObj]
+                setSubmitLightsUp(true)
+                // console.log('check1',result)
+                return result
+            }
+            return state
         }
         if (action.type === 'check2') {
-            const result = [defaultAnswerObj, defaultAnswerObj, {
-                ...defaultAnswerObj,
-                chosen: true,
-                showGray: true
-            }, defaultAnswerObj]
-            setSubmitLightsUp(true)
-            // console.log('check2',result)
-            return result
+            if (answerHasBeenGiven === false){
+                const result = [defaultAnswerObj, defaultAnswerObj, {
+                    ...defaultAnswerObj,
+                    chosen: true,
+                    showGray: true
+                }, defaultAnswerObj]
+                setSubmitLightsUp(true)
+                // console.log('check2',result)
+                return result
+            }
+            return state
         }
         if (action.type === 'check3') {
-            const result = [defaultAnswerObj, defaultAnswerObj, defaultAnswerObj, {
-                ...defaultAnswerObj,
-                chosen: true,
-                showGray: true
-            }]
-            setSubmitLightsUp(true)
-            // console.log('check3',result)
-            return result
+            if (answerHasBeenGiven === false){
+                const result = [defaultAnswerObj, defaultAnswerObj, defaultAnswerObj, {
+                    ...defaultAnswerObj,
+                    chosen: true,
+                    showGray: true
+                }]
+                setSubmitLightsUp(true)
+                // console.log('check3',result)
+                return result
+            }
+            return state
         }
         if (action.type === 'DEFAULT') {
             const result = [defaultAnswerObj, defaultAnswerObj, defaultAnswerObj, defaultAnswerObj]
@@ -241,13 +261,12 @@ function Tests() {
     function postTest(state, action) {
         if (action.type === 'START') {
             whichQuestion = 0
-            return allTests[whichQuestion]
+            return fifteenQuestions[whichQuestion]
         }
         if (action.type === 'NEXT') {
-            //TODO create errror
             setCurrentAnswer({type: 'DEFAULT'})
             whichQuestion += 1
-            return allTests[whichQuestion]
+            return fifteenQuestions[whichQuestion]
         }
 
     }
@@ -258,13 +277,27 @@ function Tests() {
         <hr className={styles['separate-line']}/>
     );
 
+    function checkIfCorrect(){
+
+    }
+
     function onSubmit() {
         if (isSubmitLightsUp === true) {
+            answerHasBeenGiven = true
             console.log('Submit', currentAnswer)
+            checkIfCorrect()
             setSubmitLightsUp(false)
-            setTest({type: 'NEXT'})
         }
     }
+    function onNext() {
+        if(answerHasBeenGiven === true){
+            answerHasBeenGiven = false
+            console.log('Next',)
+            setTest({type: 'NEXT'})
+        }
+
+    }
+
 
 
     const AnswerList = () => {
@@ -286,14 +319,16 @@ function Tests() {
     }
 
     console.log(test)
-    //TODO some of answers are undefined
+
     return (
         <div className={styles.main}>
             <p className={styles['test-title']}>JS Skill Assessment</p>
-            <div className={styles['test-question']}>{test.question}</div>
-            <div>{test.codeAfterQuestion}</div>
+            <div className={styles['test-question']}>
+                {test.question}
+                <div>{test.codeAfterQuestion}</div>
+            </div>
             <AnswerList/>
-            <TestFooter onSubmit={onSubmit} isSubmitLightsUp={isSubmitLightsUp}/>
+            <TestFooter onNext={onNext} onSubmit={onSubmit} isSubmitLightsUp={isSubmitLightsUp} isNextLightsUp={answerHasBeenGiven}/>
 
         </div>
     )

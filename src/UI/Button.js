@@ -4,11 +4,11 @@ import classes from "./Button.module.css";
 function Button(props){
 
     const clas = `${classes.customBtn} 
-    ${props.isSubmitLightsUp && classes.LightsUp }`
+    ${props.isLightsUp && classes.LightsUp }`
     // props.isSubmitLightsUp &&
 
     return(
-        <button className={clas} onClick={props.onSubmit}>{props.children}</button>
+        <button className={clas} onClick={props.onClick}>{props.children}</button>
     )
 }
 
