@@ -6,12 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="4bf74ab5-0b52-4a83-9b00-2bb466ffca4d" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/UI/Button.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/UI/Button.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/UI/Button.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/UI/Button.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Tests/TestFooter.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Tests/TestFooter.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Tests/Tests.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Tests/Tests.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/desing/web page plan.drawio" beforeDir="false" afterPath="$PROJECT_DIR$/src/desing/web page plan.drawio" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/desing/~$web page plan.drawio.bkp" beforeDir="false" afterPath="$PROJECT_DIR$/src/desing/~$web page plan.drawio.bkp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -107,6 +102,9 @@
       <workItem from="1689060433900" duration="4748000" />
       <workItem from="1689146874252" duration="13367000" />
       <workItem from="1689229255720" duration="5050000" />
+      <workItem from="1689320089733" duration="1915000" />
+      <workItem from="1689498167642" duration="8909000" />
+      <workItem from="1689581236570" duration="5358000" />
     </task>
     <servers />
   </component>

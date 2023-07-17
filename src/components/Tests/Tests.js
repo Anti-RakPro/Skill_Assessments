@@ -134,13 +134,10 @@ let fifteenQuestions
 let answerHasBeenGiven = false
 
 
-
 function Tests() {
 
-    // const [allTests, setAllTests] = useState('')
+
     const [isSubmitLightsUp, setSubmitLightsUp] = useState(false)
-    const [isNextLightsUp, setNextLightsUp] = useState(false)
-    // const [currentAnswerNumber, setCurrentAnswerNumber] = useState(0)
     const [currentAnswer, setCurrentAnswer] = useReducer(postCurrentAnswer,
         [defaultAnswerObj, defaultAnswerObj, defaultAnswerObj, defaultAnswerObj])
     const [test, setTest] = useReducer(postTest, initialArg)
@@ -189,15 +186,8 @@ function Tests() {
 
     function postCurrentAnswer(state, action) {
 
-        if (action.type === 'SET AMOUNT') {
-            setSubmitLightsUp(false)
-            return  test.answers.map(()=>{
-                return defaultAnswerObj
-            })
-        }
-
         if (action.type === 'check0') {
-            if (answerHasBeenGiven === false){
+            if (answerHasBeenGiven === false) {
                 const result = [{
                     ...defaultAnswerObj,
                     chosen: true,
@@ -210,7 +200,7 @@ function Tests() {
             return state
         }
         if (action.type === 'check1') {
-            if (answerHasBeenGiven === false){
+            if (answerHasBeenGiven === false) {
                 const result = [defaultAnswerObj, {
                     ...defaultAnswerObj,
                     chosen: true,
@@ -223,7 +213,7 @@ function Tests() {
             return state
         }
         if (action.type === 'check2') {
-            if (answerHasBeenGiven === false){
+            if (answerHasBeenGiven === false) {
                 const result = [defaultAnswerObj, defaultAnswerObj, {
                     ...defaultAnswerObj,
                     chosen: true,
@@ -236,7 +226,7 @@ function Tests() {
             return state
         }
         if (action.type === 'check3') {
-            if (answerHasBeenGiven === false){
+            if (answerHasBeenGiven === false) {
                 const result = [defaultAnswerObj, defaultAnswerObj, defaultAnswerObj, {
                     ...defaultAnswerObj,
                     chosen: true,
@@ -254,6 +244,27 @@ function Tests() {
             // console.log('check3',result)
             return result
         }
+
+        for (let i = 0; i <= 6; i++) {
+            console.log(action.type)
+            if (action.type === `RED${i}`) {
+                return state.map((elm, index, arr)=>{
+                    if(index === i){
+                        return {...elm, showRed: true}
+                    }
+                    return elm
+                })
+            }
+            if (action.type === `GREEN${i}`) {
+                return state.map((elm, index)=>{
+                    if(index === i){
+                        return {...elm, showGreen: true}
+                    }
+                    return elm
+                })
+            }
+        }
+
         return [defaultAnswerObj, defaultAnswerObj, defaultAnswerObj, defaultAnswerObj]
     }
 
@@ -277,32 +288,63 @@ function Tests() {
         <hr className={styles['separate-line']}/>
     );
 
-    function checkIfCorrect(){
+    function checkIfCorrect() {
+        // console.log(test.answers, 'test.answers')
+        let indexIsChozen = ''
+        let indexIsCorrect = ''
+        for (let index in currentAnswer) {
+            // console.log(currentAnswer[index])
+            if (currentAnswer[index].chosen === true) {
+                indexIsChozen = index
+            }
 
+        }
+
+        for (let index in test.answers) {
+            // console.log(test.answers[index])
+            if (test.answers[index].isCorrectAnswer === true) {
+                indexIsCorrect = index
+            }
+        }
+
+        console.log(indexIsChozen === indexIsCorrect, indexIsChozen, indexIsCorrect)
+        if (indexIsChozen === indexIsCorrect) {
+            answerHistory[whichQuestion] = true
+            setCurrentAnswer(
+                {type: `GREEN${indexIsCorrect}`})
+
+
+        } else {
+            answerHistory[whichQuestion] = false
+            setCurrentAnswer({type: `RED${indexIsChozen}`})
+            setCurrentAnswer({type: `GREEN${indexIsCorrect}`})
+
+        }
+        // console.log(answerHistory)
     }
 
     function onSubmit() {
         if (isSubmitLightsUp === true) {
             answerHasBeenGiven = true
-            console.log('Submit', currentAnswer)
+            // console.log('Submit', currentAnswer)
             checkIfCorrect()
             setSubmitLightsUp(false)
         }
     }
+
     function onNext() {
-        if(answerHasBeenGiven === true){
+        if (answerHasBeenGiven === true) {
             answerHasBeenGiven = false
-            console.log('Next',)
+            // console.log('Next',)
             setTest({type: 'NEXT'})
         }
 
     }
 
 
-
     const AnswerList = () => {
         return <div className={styles['test-answers']}>
-            { test.answers !== undefined && test.answers.map((currentObj, index, value) => {
+            {test.answers !== undefined && test.answers.map((currentObj, index, value) => {
 
                 return <div key={Math.random() * 1000}>
                     <div className={styles['test-answer']}>
@@ -318,7 +360,7 @@ function Tests() {
         </div>
     }
 
-    console.log(test)
+    // console.log(test)
 
     return (
         <div className={styles.main}>
@@ -328,7 +370,8 @@ function Tests() {
                 <div>{test.codeAfterQuestion}</div>
             </div>
             <AnswerList/>
-            <TestFooter onNext={onNext} onSubmit={onSubmit} isSubmitLightsUp={isSubmitLightsUp} isNextLightsUp={answerHasBeenGiven}/>
+            <TestFooter onNext={onNext} onSubmit={onSubmit} isSubmitLightsUp={isSubmitLightsUp}
+                        isNextLightsUp={answerHasBeenGiven}/>
 
         </div>
     )
