@@ -131,7 +131,7 @@ const defaultAnswerObj =
 let whichQuestion = 0
 const answerHistory = [NaN, NaN, NaN, NaN, NaN, NaN, NaN, NaN, NaN, NaN, NaN, NaN, NaN, NaN, NaN]
 let fifteenQuestions
-let answerHasBeenGiven = false
+let answerHasBeenSubmited = false
 
 
 function Tests() {
@@ -186,67 +186,43 @@ function Tests() {
 
     function postCurrentAnswer(state, action) {
 
-        if (action.type === 'check0') {
-            if (answerHasBeenGiven === false) {
-                const result = [{
-                    ...defaultAnswerObj,
-                    chosen: true,
-                    showGray: true
-                }, defaultAnswerObj, defaultAnswerObj, defaultAnswerObj]
-                setSubmitLightsUp(true)
-                // console.log('check0',result)
-                return result
-            }
-            return state
-        }
-        if (action.type === 'check1') {
-            if (answerHasBeenGiven === false) {
-                const result = [defaultAnswerObj, {
-                    ...defaultAnswerObj,
-                    chosen: true,
-                    showGray: true
-                }, defaultAnswerObj, defaultAnswerObj]
-                setSubmitLightsUp(true)
-                // console.log('check1',result)
-                return result
-            }
-            return state
-        }
-        if (action.type === 'check2') {
-            if (answerHasBeenGiven === false) {
-                const result = [defaultAnswerObj, defaultAnswerObj, {
-                    ...defaultAnswerObj,
-                    chosen: true,
-                    showGray: true
-                }, defaultAnswerObj]
-                setSubmitLightsUp(true)
-                // console.log('check2',result)
-                return result
-            }
-            return state
-        }
-        if (action.type === 'check3') {
-            if (answerHasBeenGiven === false) {
-                const result = [defaultAnswerObj, defaultAnswerObj, defaultAnswerObj, {
-                    ...defaultAnswerObj,
-                    chosen: true,
-                    showGray: true
-                }]
-                setSubmitLightsUp(true)
-                // console.log('check3',result)
-                return result
-            }
-            return state
-        }
+
         if (action.type === 'DEFAULT') {
-            const result = [defaultAnswerObj, defaultAnswerObj, defaultAnswerObj, defaultAnswerObj]
+            let result
+            // if (fifteenQuestions[whichQuestion].answers.length !== 0 ){
+                 result = fifteenQuestions[whichQuestion].answers.map(()=>{
+                    return defaultAnswerObj
+                })
+            // }
+
             setSubmitLightsUp(false)
-            // console.log('check3',result)
+            console.log('result',result)
             return result
         }
 
+
         for (let i = 0; i <= 6; i++) {
-            console.log(action.type)
+            // console.log(action.type)
+            if (action.type === `check${i}`) {
+                let result
+                if (answerHasBeenSubmited === false) {
+                    result = fifteenQuestions[whichQuestion].answers.map((elm, index)=>{
+                        // console.log(action.type[5] === i,action.type[5], i)
+                        if (action.type[5] == index){
+                            return {
+                                ...defaultAnswerObj,
+                                chosen: true,
+                                showGray: true
+                            }
+                        }
+                            return defaultAnswerObj
+                    })
+
+                    setSubmitLightsUp(true)
+                    return result
+                }
+                return state
+            }
             if (action.type === `RED${i}`) {
                 return state.map((elm, index, arr)=>{
                     if(index === i){
@@ -325,7 +301,7 @@ function Tests() {
 
     function onSubmit() {
         if (isSubmitLightsUp === true) {
-            answerHasBeenGiven = true
+            answerHasBeenSubmited = true
             // console.log('Submit', currentAnswer)
             checkIfCorrect()
             setSubmitLightsUp(false)
@@ -333,8 +309,8 @@ function Tests() {
     }
 
     function onNext() {
-        if (answerHasBeenGiven === true) {
-            answerHasBeenGiven = false
+        if (answerHasBeenSubmited === true) {
+            answerHasBeenSubmited = false
             // console.log('Next',)
             setTest({type: 'NEXT'})
         }
@@ -360,7 +336,7 @@ function Tests() {
         </div>
     }
 
-    // console.log(test)
+
 
     return (
         <div className={styles.main}>
@@ -371,7 +347,7 @@ function Tests() {
             </div>
             <AnswerList/>
             <TestFooter onNext={onNext} onSubmit={onSubmit} isSubmitLightsUp={isSubmitLightsUp}
-                        isNextLightsUp={answerHasBeenGiven}/>
+                        isNextLightsUp={answerHasBeenSubmited}/>
 
         </div>
     )
