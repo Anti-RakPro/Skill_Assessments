@@ -1,3 +1,5 @@
+    import jsAll from '../questions/js/javascript-quiz-final'
+
 
 function reformatToArr(str) {
     console.log(str)
@@ -109,15 +111,22 @@ function FetchTest(){
 
     let fifteenQuestions = 'no no no'
 
-    async function chooseQuestions(arr) {
-        console.log(arr)
+    function getRandomElementsFromArray(arr, numElements) {
+        // Shuffle the original array
+        const shuffled = arr.slice().sort(() => 0.5 - Math.random());
+        // Return the first numElements elements
+        // //TODO
+        // const arr2 = []
+        // const arr3 = arr2.unshift(arr[139])
+        console.log(arr[139].question)
+        // return shuffled.slice(0, numElements);
+        return shuffled.slice(0, numElements);
+    // .unshift(arr[140],arr[141],arr[142])
+    }
 
-        function getRandomElementsFromArray(arr, numElements) {
-            // Shuffle the original array
-            const shuffled = arr.slice().sort(() => 0.5 - Math.random());
-            // Return the first numElements elements
-            return shuffled.slice(0, numElements);
-        }
+    async function chooseQuestions(arr) {
+        // console.log(JSON.stringify(arr))
+        // console.log(arr)
 
         // const fifteenQuestions = arr.slice(0, 15)
         fifteenQuestions = await getRandomElementsFromArray(arr, 15)
@@ -145,8 +154,13 @@ function FetchTest(){
     }
 
 
+    function fetchTestsLocal (){
+        console.log(jsAll)
+        return getRandomElementsFromArray(jsAll)
+    }
 
-    return fetchTests()
+    return fetchTestsLocal ()
+    // return fetchTests()
 }
 
 export default FetchTest

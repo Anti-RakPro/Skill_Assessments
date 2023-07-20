@@ -42,9 +42,10 @@ function Tests() {
     //     return  defaultAnswerObj
     // })
 
-    useEffect( async () => {
+    useEffect(  () => {
         // console.log('start request')
-        fifteenQuestions = await FetchTest()
+        fifteenQuestions =  FetchTest()
+        console.log(fifteenQuestions)
 
         setTest({type: 'START'})
         return ()=>{}
