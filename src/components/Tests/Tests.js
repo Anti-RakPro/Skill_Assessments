@@ -56,11 +56,10 @@ function Tests() {
 
         if (action.type === 'DEFAULT') {
             let result
-            // if (fifteenQuestions[whichQuestion].answers.length !== 0 ){
                  result = fifteenQuestions[whichQuestion].answers.map(()=>{
                     return defaultAnswerObj
                 })
-            // }
+
 
             setSubmitLightsUp(false)
             console.log('result',result)
