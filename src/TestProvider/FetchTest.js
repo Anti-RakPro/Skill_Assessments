@@ -116,9 +116,8 @@ function FetchTest(){
         const shuffled = arr.slice().sort(() => 0.5 - Math.random());
         // Return the first numElements elements
         // //TODO
-        // const arr2 = []
-        // const arr3 = arr2.unshift(arr[139])
-        console.log(arr[139].question)
+
+        // console.log(arr[139].question)
         // return shuffled.slice(0, numElements);
         return shuffled.slice(0, numElements);
     // .unshift(arr[140],arr[141],arr[142])
@@ -155,7 +154,7 @@ function FetchTest(){
 
 
     function fetchTestsLocal (){
-        console.log(jsAll)
+        // console.log(jsAll)
         return getRandomElementsFromArray(jsAll)
     }
 

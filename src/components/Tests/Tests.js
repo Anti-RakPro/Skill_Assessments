@@ -45,7 +45,7 @@ function Tests() {
     useEffect(  () => {
         // console.log('start request')
         fifteenQuestions =  FetchTest()
-        console.log(fifteenQuestions)
+        // console.log(fifteenQuestions)
 
         setTest({type: 'START'})
         return ()=>{}
@@ -62,7 +62,7 @@ function Tests() {
 
 
             setSubmitLightsUp(false)
-            console.log('result',result)
+            // console.log('result',result)
             return result
         }
 
@@ -149,7 +149,7 @@ function Tests() {
             }
         }
 
-        console.log(indexIsChozen === indexIsCorrect, indexIsChozen, indexIsCorrect)
+        // console.log(indexIsChozen === indexIsCorrect, indexIsChozen, indexIsCorrect)
         if (indexIsChozen === indexIsCorrect) {
             answerHistory[whichQuestion] = true
             setCurrentAnswer(
