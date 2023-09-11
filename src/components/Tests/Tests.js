@@ -139,7 +139,6 @@ function Tests() {
             if (currentAnswer[index].chosen === true) {
                 indexIsChozen = index
             }
-
         }
 
         for (let index in test.answers) {
