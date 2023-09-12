@@ -1,4 +1,6 @@
 const dummyData = {
-    name: '1',
+    name: '2',
+    number: '0505050123',
+
 
 }
