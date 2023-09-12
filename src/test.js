@@ -3,6 +3,4 @@ const dummyData = {
     number: '0505050123',
     comment: 'hello',
 
-
-
 }
