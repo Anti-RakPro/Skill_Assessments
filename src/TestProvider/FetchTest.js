@@ -151,8 +151,6 @@ function FetchTest(){
 
         return blob
     }
-
-
     function fetchTestsLocal (){
         // console.log(jsAll)
         return getRandomElementsFromArray(jsAll)
