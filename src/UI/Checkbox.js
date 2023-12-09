@@ -10,7 +10,7 @@ function Checkbox ({obj, onChange}){
     ${obj.showGreen === true && classes.showGreen} 
     ${obj.showRed === true && classes.showRed}`
 
-    debugger
+    // debugger
     return (
             <div className={clas} onClick={onChange} />
     )
