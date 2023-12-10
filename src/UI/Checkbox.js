@@ -1,5 +1,5 @@
-import React from "react";
-import classes from './Checkbox.module.css'
+import React from 'react';
+import classes from './Checkbox.module.css';
 
 
 function Checkbox ({obj, onChange}){
@@ -8,14 +8,14 @@ function Checkbox ({obj, onChange}){
     const clas = `${classes.checkbox} 
     ${obj.showGray === true && classes.showGray} 
     ${obj.showGreen === true && classes.showGreen} 
-    ${obj.showRed === true && classes.showRed}`
+    ${obj.showRed === true && classes.showRed}`;
 
     // debugger
     return (
-            <div className={clas} onClick={onChange} />
-    )
+        <div className={clas} onClick={onChange} />
+    );
 
 }
 
 
-export default Checkbox
+export default Checkbox;

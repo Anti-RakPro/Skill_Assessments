@@ -1,9 +1,9 @@
-import styles from './Tests.module.css'
-import FetchTest from "../../TestProvider/FetchTest";
-import {useState, useEffect, useReducer} from "react";
-import Checkbox from "../../UI/Checkbox";
-import TestFooter from "./TestFooter";
-import React from "react";
+import styles from './Tests.module.css';
+import FetchTest from '../../TestProvider/FetchTest';
+import {useState, useEffect, useReducer} from 'react';
+import Checkbox from '../../UI/Checkbox';
+import TestFooter from './TestFooter';
+import React from 'react';
 
 
 
@@ -15,28 +15,28 @@ const initialArg = [{
         {answer: 'some answer3', isCorrectAnswer: false},
         {answer: 'some answer4', isCorrectAnswer: false}],
     codeAfterQuestion: null,
-    question: " Q1. some question some question some question some question some question ?",
-    reference: "[Reference Javascript Comparison Operators](https://www.w3schools.com/js/js_operators.asp)"
-}]
+    question: ' Q1. some question some question some question some question some question ?',
+    reference: '[Reference Javascript Comparison Operators](https://www.w3schools.com/js/js_operators.asp)'
+}];
 
 const defaultAnswerObj =
     // TODO
-    {chosen: false, showGray: false, showGreen: false, showRed: false}
+    {chosen: false, showGray: false, showGreen: false, showRed: false};
 
 
-let whichQuestion = 0
-const answerHistory = [NaN, NaN, NaN, NaN, NaN, NaN, NaN, NaN, NaN, NaN, NaN, NaN, NaN, NaN, NaN]
-let fifteenQuestions = []
-let answerHasBeenSubmited = false
+let whichQuestion = 0;
+const answerHistory = [NaN, NaN, NaN, NaN, NaN, NaN, NaN, NaN, NaN, NaN, NaN, NaN, NaN, NaN, NaN];
+let fifteenQuestions = [];
+let answerHasBeenSubmited = false;
 
 
 function Tests() {
 
 
-    const [isSubmitLightsUp, setSubmitLightsUp] = useState(false)
+    const [isSubmitLightsUp, setSubmitLightsUp] = useState(false);
     const [currentAnswer, setCurrentAnswer] = useReducer(postCurrentAnswer,
-        [defaultAnswerObj, defaultAnswerObj, defaultAnswerObj, defaultAnswerObj])
-    const [test, setTest] = useReducer(postTest, initialArg)
+        [defaultAnswerObj, defaultAnswerObj, defaultAnswerObj, defaultAnswerObj]);
+    const [test, setTest] = useReducer(postTest, initialArg);
 
     // let currentAnswerInitializerArg = test.map(()=>{
     //     return  defaultAnswerObj
@@ -44,33 +44,33 @@ function Tests() {
 
     useEffect(  () => {
         // console.log('start request')
-        fifteenQuestions =  FetchTest()
+        fifteenQuestions =  FetchTest();
         // console.log(fifteenQuestions)
 
-        setTest({type: 'START'})
-        return ()=>{}
-    }, [])
+        setTest({type: 'START'});
+        return ()=>{};
+    }, []);
 
     function postCurrentAnswer(state, action) {
 
 
         if (action.type === 'DEFAULT') {
-            let result
-                 result = fifteenQuestions[whichQuestion].answers.map(()=>{
-                    return defaultAnswerObj
-                })
+            let result;
+            result = fifteenQuestions[whichQuestion].answers.map(()=>{
+                return defaultAnswerObj;
+            });
 
 
-            setSubmitLightsUp(false)
+            setSubmitLightsUp(false);
             // console.log('result',result)
-            return result
+            return result;
         }
 
 
         for (let i = 0; i <= 6; i++) {
             // console.log(action.type)
             if (action.type === `check${i}`) {
-                let result
+                let result;
                 if (answerHasBeenSubmited === false) {
                     result = fifteenQuestions[whichQuestion].answers.map((elm, index)=>{
                         // console.log(action.type[5] === i,action.type[5], i)
@@ -79,47 +79,47 @@ function Tests() {
                                 ...defaultAnswerObj,
                                 chosen: true,
                                 showGray: true
-                            }
+                            };
                         }
-                            return defaultAnswerObj
-                    })
+                        return defaultAnswerObj;
+                    });
 
-                    setSubmitLightsUp(true)
-                    return result
+                    setSubmitLightsUp(true);
+                    return result;
                 }
-                return state
+                return state;
             }
             if (action.type === `RED${i}`) {
                 return state.map((elm, index, arr)=>{
                     if(index === i){
-                        return {...elm, showRed: true}
+                        return {...elm, showRed: true};
                     }
-                    return elm
-                })
+                    return elm;
+                });
             }
             if (action.type === `GREEN${i}`) {
                 return state.map((elm, index)=>{
                     if(index === i){
-                        return {...elm, showGreen: true}
+                        return {...elm, showGreen: true};
                     }
-                    return elm
-                })
+                    return elm;
+                });
             }
         }
 
-        return [defaultAnswerObj, defaultAnswerObj, defaultAnswerObj, defaultAnswerObj]
+        return [defaultAnswerObj, defaultAnswerObj, defaultAnswerObj, defaultAnswerObj];
     }
 
 
     function postTest(state, action) {
         if (action.type === 'START') {
-            whichQuestion = 0
-            return fifteenQuestions[whichQuestion]
+            whichQuestion = 0;
+            return fifteenQuestions[whichQuestion];
         }
         if (action.type === 'NEXT') {
-            setCurrentAnswer({type: 'DEFAULT'})
-            whichQuestion += 1
-            return fifteenQuestions[whichQuestion]
+            setCurrentAnswer({type: 'DEFAULT'});
+            whichQuestion += 1;
+            return fifteenQuestions[whichQuestion];
         }
 
     }
@@ -132,33 +132,33 @@ function Tests() {
 
     function checkIfCorrect() {
         // console.log(test.answers, 'test.answers')
-        let indexIsChozen = ''
-        let indexIsCorrect = ''
+        let indexIsChozen = '';
+        let indexIsCorrect = '';
         for (let index in currentAnswer) {
             // console.log(currentAnswer[index])
             if (currentAnswer[index].chosen === true) {
-                indexIsChozen = index
+                indexIsChozen = index;
             }
         }
 
         for (let index in test.answers) {
             // console.log(test.answers[index])
             if (test.answers[index].isCorrectAnswer === true) {
-                indexIsCorrect = index
+                indexIsCorrect = index;
             }
         }
 
         // console.log(indexIsChozen === indexIsCorrect, indexIsChozen, indexIsCorrect)
         if (indexIsChozen === indexIsCorrect) {
-            answerHistory[whichQuestion] = true
+            answerHistory[whichQuestion] = true;
             setCurrentAnswer(
-                {type: `GREEN${indexIsCorrect}`})
+                {type: `GREEN${indexIsCorrect}`});
 
 
         } else {
-            answerHistory[whichQuestion] = false
-            setCurrentAnswer({type: `RED${indexIsChozen}`})
-            setCurrentAnswer({type: `GREEN${indexIsCorrect}`})
+            answerHistory[whichQuestion] = false;
+            setCurrentAnswer({type: `RED${indexIsChozen}`});
+            setCurrentAnswer({type: `GREEN${indexIsCorrect}`});
 
         }
         // console.log(answerHistory)
@@ -166,18 +166,18 @@ function Tests() {
 
     function onSubmit() {
         if (isSubmitLightsUp === true) {
-            answerHasBeenSubmited = true
+            answerHasBeenSubmited = true;
             // console.log('Submit', currentAnswer)
-            checkIfCorrect()
-            setSubmitLightsUp(false)
+            checkIfCorrect();
+            setSubmitLightsUp(false);
         }
     }
 
     function onNext() {
         if (answerHasBeenSubmited === true) {
-            answerHasBeenSubmited = false
+            answerHasBeenSubmited = false;
             // console.log('Next',)
-            setTest({type: 'NEXT'})
+            setTest({type: 'NEXT'});
         }
 
     }
@@ -190,16 +190,16 @@ function Tests() {
                 return <div key={Math.random() * 1000}>
                     <div className={styles['test-answer']}>
                         <Checkbox obj={currentAnswer[index]} onChange={() => {
-                            setCurrentAnswer({type: `check${index}`})
+                            setCurrentAnswer({type: `check${index}`});
                         }}/>
                         {currentObj.answer !== undefined && currentObj.answer}
                     </div>
                     <SeparateLine/>
-                </div>
+                </div>;
             })}
 
-        </div>
-    }
+        </div>;
+    };
 
 
 
@@ -212,10 +212,10 @@ function Tests() {
             </div>
             <AnswerList/>
             <TestFooter onNext={onNext} onSubmit={onSubmit} isSubmitLightsUp={isSubmitLightsUp}
-                        isNextLightsUp={answerHasBeenSubmited}/>
+                isNextLightsUp={answerHasBeenSubmited}/>
 
         </div>
-    )
+    );
 }
 
-export default Tests
+export default Tests;

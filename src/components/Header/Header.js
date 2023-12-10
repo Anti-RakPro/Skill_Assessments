@@ -1,6 +1,6 @@
-import styles from './Header.module.css'
-import jsLogo from '../../img/logo/images.png'
-import React from "react";
+import styles from './Header.module.css';
+import jsLogo from '../../img/logo/images.png';
+import React from 'react';
 import { Link } from 'react-router-dom';
 
 
@@ -18,12 +18,12 @@ function Header() {
                     <Link to={'tests'}>Tests </Link>
                     <Link to={'test'}>Test </Link>
                     <Link to={'about'}>About</Link>
-                    </div>
+                </div>
 
             </div>
         </div>
-            )
+    );
 
 }
 
-export default Header
+export default Header;

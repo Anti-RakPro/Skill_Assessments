@@ -1,6 +1,6 @@
-import styles from './TestFooter.module.css'
-import Button from "../../UI/Button";
-import {useState} from "react";
+import styles from './TestFooter.module.css';
+import Button from '../../UI/Button';
+import {useState} from 'react';
 
 
 function TestFooter(props){
@@ -8,14 +8,14 @@ function TestFooter(props){
 
 
     return(
-    <div className = {styles.testFooterMain} >
-        <div>Q Number, timer</div>
-        <div>
+        <div className = {styles.testFooterMain} >
+            <div>Q Number, timer</div>
+            <div>
 
-            <Button onClick={props.onNext} isLightsUp={props.isNextLightsUp}>Next</Button>
-            <Button onClick={props.onSubmit} isLightsUp={props.isSubmitLightsUp}>Submit</Button>
+                <Button onClick={props.onNext} isLightsUp={props.isNextLightsUp}>Next</Button>
+                <Button onClick={props.onSubmit} isLightsUp={props.isSubmitLightsUp}>Submit</Button>
+            </div>
         </div>
-    </div>
-    )}
+    );}
 
-export default TestFooter
+export default TestFooter;
