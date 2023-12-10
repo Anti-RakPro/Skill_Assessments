@@ -15,6 +15,7 @@
         "react"
     ],
     "rules": {
+        "consistent-return": "warn",
         "indent": ["warn",4],
         "linebreak-style": [
             "warn",
