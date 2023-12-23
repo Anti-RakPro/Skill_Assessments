@@ -90,7 +90,7 @@ function Tests() {
                 return state;
             }
             if (action.type === `RED${i}`) {
-                return state.map((elm, index, arr)=>{
+                return state.map((elm, index)=>{
                     if(index === i){
                         return {...elm, showRed: true};
                     }
@@ -121,7 +121,7 @@ function Tests() {
             whichQuestion += 1;
             return fifteenQuestions[whichQuestion];
         }
-
+        return Error('ups');
     }
 
     // console.log(allTests)
@@ -185,7 +185,7 @@ function Tests() {
 
     const AnswerList = () => {
         return <div className={styles['test-answers']}>
-            {test.answers !== undefined && test.answers.map((currentObj, index, value) => {
+            {test.answers !== undefined && test.answers.map((currentObj, index) => {
 
                 return <div key={Math.random() * 1000}>
                     <div className={styles['test-answer']}>
