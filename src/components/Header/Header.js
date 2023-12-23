@@ -18,6 +18,7 @@ function Header() {
                     <Link to={'tests'}>Tests </Link>
                     <Link to={'test'}>Test </Link>
                     <Link to={'about'}>About</Link>
+                    <Link to={'profile'}>Profile</Link>
                 </div>
 
             </div>

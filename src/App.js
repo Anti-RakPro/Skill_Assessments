@@ -9,6 +9,8 @@ import React from 'react';
 import Body from './components/Body/Body';
 import Header from './components/Header/Header';
 import Tests from './components/Tests/Tests';
+import SignIn from './pages/SignIn SignUp/SignIn';
+import SignUp from './pages/SignIn SignUp/SignUp';
 
 function App() {
     return (
@@ -21,6 +23,9 @@ function App() {
                     <Route id='tests' path='/tests' element={'list of available tests'} />
                     <Route id='test' path='/test' element={<Tests/>}/>
                     <Route path='test/result' element={'Result'}/>
+                    <Route path='/sign-in' element={<SignIn/>}/>
+                    <Route path='/sign-up' element={<SignUp/>}/>
+                    <Route path='/profile' element={'profile'}/>
                     <Route path='*' element='page not found' />
                 </Routes>
             </Body>
