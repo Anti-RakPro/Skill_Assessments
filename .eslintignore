@@ -1,1 +1,13 @@
 # /src/components/Tests/1-10.js
+node_modules/
+build/
+dist/
+.eslintignore
+.eslintrc.js
+.gitignore
+.prettierignore
+.prettierrc
+package-lock.json
+package.json
+README.md
+tsconfig.json
