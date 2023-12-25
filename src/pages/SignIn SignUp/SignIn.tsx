@@ -1,6 +1,15 @@
+import React from "react";
 
-
-function SignIn(){
-    return 'SignIn';
+interface SignInProps {
+    name: string,
+    email: string
 }
+
+const SignIn: React.FC<SignInProps> = ({name,email}) => {
+    return <div>SignIn</div>;
+};
+
+// function SignIn(){
+//     return 'SignIn';
+// }
 export default SignIn;
