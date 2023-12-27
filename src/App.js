@@ -12,6 +12,7 @@ import Header from './components/Header/Header';
 import Tests from './components/Tests/Tests';
 import SignIn from './pages/SignIn SignUp/SignIn';
 import SignUp from './pages/SignIn SignUp/SignUp';
+import Counter from "./components/Counter/ Counter";
 
 function App() {
     return (
@@ -26,7 +27,7 @@ function App() {
                     <Route path='test/result' element={'Result'}/>
                     <Route path='/sign-in' element={<SignIn/>}/>
                     <Route path='/sign-up' element={<SignUp/>}/>
-                    <Route path='/profile' element={'profile'}/>
+                    <Route path='/profile' element={<Counter/>}/>
                     <Route path='*' element='page not found' />
                 </Routes>
             </Body>
