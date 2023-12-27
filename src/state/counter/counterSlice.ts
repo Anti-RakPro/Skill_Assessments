@@ -1,12 +1,11 @@
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-
 interface CounterSlice {
   value: number;
 }
 
 const initialState: CounterSlice = {
-  value: 0
+  value: 0,
 };
 
 const counterSlice = createSlice({
@@ -21,18 +20,20 @@ const counterSlice = createSlice({
     },
     incrementByAmount: (state, action: PayloadAction<number>) => {
       state.value += action.payload;
-    }
+    },
   },
   extraReducers: (builder) => {
-    builder.addCase(incrementAsync.pending, () => {
-      console.log("incrementAsync.pending");
-    }).addCase(
-      incrementAsync.fulfilled, (state, action: PayloadAction<number>) => {
-        state.value += action.payload;
-      }
-    );
-
-  }
+    builder
+      .addCase(incrementAsync.pending, () => {
+        console.log("incrementAsync.pending");
+      })
+      .addCase(
+        incrementAsync.fulfilled,
+        (state, action: PayloadAction<number>) => {
+          state.value += action.payload;
+        },
+      );
+  },
 });
 
 export const incrementAsync = createAsyncThunk(
@@ -40,7 +41,7 @@ export const incrementAsync = createAsyncThunk(
   async (amount: number) => {
     await new Promise((resolve) => setTimeout(resolve, 1000));
     return amount;
-  }
+  },
 );
 export const { increment, decrement, incrementByAmount } = counterSlice.actions;
 export default counterSlice.reducer;

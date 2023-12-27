@@ -1,4 +1,4 @@
-function SignUp(){
-    return 'SignUp';
+function SignUp() {
+  return "SignUp";
 }
 export default SignUp;

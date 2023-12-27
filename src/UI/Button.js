@@ -3,20 +3,19 @@ import React from 'react';
 import classes from './Button.module.css';
 // import PropTypes from 'prop-types';
 
-function Button(props){
+function Button(props) {
+  const clas = `${classes.customBtn} 
+    ${props.isLightsUp && classes.LightsUp}`;
+  // props.isSubmitLightsUp &&
 
-    const clas = `${classes.customBtn} 
-    ${props.isLightsUp && classes.LightsUp }`;
-    // props.isSubmitLightsUp &&
-
-    return(
-        <button className={clas} onClick={props.onClick}>{props.children}</button>
-    );
+  return (
+    <button className={clas} onClick={props.onClick}>
+      {props.children}
+    </button>
+  );
 }
 
-
-
-//todo 
+//todo
 // Button.propTypes = {
 //     onClick: PropTypes.func,
 //     children: PropTypes.func,
@@ -25,4 +24,3 @@ function Button(props){
 // };
 
 export default Button;
-
