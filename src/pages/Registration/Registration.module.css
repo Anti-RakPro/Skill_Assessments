@@ -1,3 +1,14 @@
-.red-border {
+.reg-body {
+    display: flex;
+}
 
+.inputs-body {
+    width: 60%;
+    min-height: 10px;
+    border: 1px solid #000;
+}
+.auth-vars {
+    width: 40%;
+    min-height: 10px;
+    border: 1px solid #000;
 }
