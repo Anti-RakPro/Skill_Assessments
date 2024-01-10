@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "include": ["src/**/*.ts", "src/**/*.tsx", "src/**/*.svg"],
     /* Visit https://aka.ms/tsconfig to read more about this file */
 
     /* Projects */

@@ -1,7 +1,28 @@
 .body{
     max-width: 1125px;
-    margin: 40px auto;
+    margin: 0 auto;
     border-radius: 15px;
-    padding: 40px 30px;
-    background-color: white;
+    padding: 60px 60px;
+    /*background-color: white;*/
+}
+@media (max-width: 1100px) {
+    .body{
+        padding: 50px 50px;
+    }
+}
+@media (max-width: 900px) {
+    .body{
+        padding: 40px 30px;
+    }
+}
+@media (max-width: 600px) {
+    .body{
+        padding: 30px 20px;
+    }
+}
+
+@media (max-width: 400px) {
+    .body{
+        padding: 25px 10px;
+    }
 }

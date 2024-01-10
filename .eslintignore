@@ -11,3 +11,5 @@ package-lock.json
 package.json
 README.md
 tsconfig.json
+src/components/Tests/1-10.txt
+src/components/Tests/exempl.txt

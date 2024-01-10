@@ -1,14 +1,81 @@
-.reg-body {
-    display: flex;
+.auth-body {
+  margin: 0 auto;
+  max-width: 800px;
+  display: flex;
 }
 
-.inputs-body {
-    width: 60%;
-    min-height: 10px;
-    border: 1px solid #000;
+.auth-left {
+  display: flex;
+  flex-direction: column;
+  width: 60%;
+  min-height: 10px;
+  border: 1px solid #000;
+  border-radius: 10px;
+  background: #ffffff;
+  margin: 0 5px;
 }
-.auth-vars {
-    width: 40%;
-    min-height: 10px;
-    border: 1px solid #000;
+
+.auth-right {
+  width: 40%;
+  min-height: 30px;
+  border: 1px solid #000;
+  border-radius: 10px;
+  background: #ffffff;
+  margin: 0 5px;
+  padding: 8px 5px;
+
+}
+.auth-title {
+  margin-top: 10px;
+  text-align: center;
+}
+
+.auth-input {
+  margin: 6px 4px;
+  height: 20px;
+  border-radius: 5px;
+  border: 1px solid #3c3f41;
+  padding: 0 5px;
+}
+.auth-sign-button{
+    height: 40px;
+    margin: 5px;
+}
+
+.mediaBtn {
+  display: inline-flex;
+  width: 100%;
+  height: 55px;
+  padding: 5px 10px;
+  border-radius: 50px;
+  align-items: center;
+  /*background: #ebebeb;*/
+
+  overflow: hidden;
+  line-height: 1em;
+
+  /*text-overflow: ellipsis;*/
+  /*word-wrap: break-word;*/
+
+
+}
+.google-img{
+  margin: auto 10px;
+  height: 40px;
+  width: 40px;
+}
+
+
+@media (max-width: 680px) {
+  .auth-body {
+    flex-direction: column;
+
+  }
+  .auth-left {
+    width: unset;
+    margin-bottom: 10px;
+  }
+  .auth-right {
+    width: unset;
+  }
 }

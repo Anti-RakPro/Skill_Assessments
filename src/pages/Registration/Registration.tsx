@@ -1,6 +1,8 @@
 import React from "react";
 import styles from "./Registration.module.css";
 
+import googleLogo from "../../assets/googleLogo.svg";
+
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
@@ -32,9 +34,20 @@ interface SignInProps {
 const x = "str";
 const Registration: React.FC<SignInProps> = ({ name, email }) => {
   return (
-    <div className={styles["reg-body"]}>
-      <div className={styles["inputs-body"]}></div>
-      <div className={styles["auth-vars"]}></div>
+    <div className={styles["auth-body"]}>
+      <div className={styles["auth-left"]}>
+        <h2 className={styles["auth-title"]}>Sign Up to continue</h2>
+        <input className={styles["auth-input"]} placeholder="Email address" />
+        <input className={styles["auth-input"]} placeholder="Password" />
+        <input className={styles["auth-input"]} placeholder="Repeat Password" />
+        <button className={styles["auth-sign-button"]}>Sign Up</button>
+      </div>
+      <div className={styles["auth-right"]}>
+        <button className={styles["mediaBtn"]}>
+          <img className={styles["google-img"]} src={googleLogo} alt="" />
+          Continue with Google
+        </button>
+      </div>
     </div>
   );
 };

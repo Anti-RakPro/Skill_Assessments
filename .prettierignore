@@ -3,3 +3,5 @@ build
 /package.json
 /package-lock.json
 tsconfig.json
+src/components/Tests/1-10.txt
+src/components/Tests/exempl.txt
