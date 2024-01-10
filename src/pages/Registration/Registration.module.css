@@ -69,7 +69,6 @@
 @media (max-width: 680px) {
   .auth-body {
     flex-direction: column;
-
   }
   .auth-left {
     width: unset;
