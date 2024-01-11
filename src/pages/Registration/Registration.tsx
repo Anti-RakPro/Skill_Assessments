@@ -34,13 +34,18 @@ interface SignInProps {
 
 const x = "str";
 const Registration: React.FC<SignInProps> = ({ name, email }) => {
-  const initialState = {
+  const initialState: { [key: string]: string } = {
     email: "",
     password: "",
     repeatPassword: "",
   };
 
-  const formReducer = (state, action) => {
+  type FormAction =
+    | { type: "SET_EMAIL"; email: string }
+    | { type: "SET_PASSWORD"; password: string }
+    | { type: "SET_REPEAT_PASSWORD"; repeatPassword: string };
+
+  const formReducer = (state: typeof initialState, action: FormAction) => {
     switch (action.type) {
       case "SET_EMAIL":
         return { ...state, email: action.email };
