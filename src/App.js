@@ -11,7 +11,7 @@ import Header from "./components/Header/Header";
 import Tests from "./components/Tests/Tests";
 import Registration from "./pages/Registration/Registration";
 
-import Counter from "./components/Counter/ Counter";
+// import Counter from "./components/Counter/ Counter";
 
 function App() {
   return (
@@ -19,13 +19,18 @@ function App() {
       <Header />
       <Body>
         <Routes>
-          <Route id="about" path="/about" element={<Counter />} />
+          {/*<Route id="about" path="/about" element={<Counter />} />*/}
           <Route id="home" path="/" element={"Home"} />
           <Route id="tests" path="/tests" element={"list of available tests"} />
           <Route id="test" path="/test" element={<Tests />} />
           <Route path="test/result" element={"Result"} />
           {/*<Route path="/sign-in" element={<Registration />} />*/}
-          <Route id="profile" path="/profile" element={<Registration />} />
+          <Route
+            id="registration"
+            path="/registration"
+            element={<Registration />}
+          />
+          <Route id="profile" path="/profile" element={"Profile"} />
           <Route path="*" element="page not found" />
         </Routes>
       </Body>

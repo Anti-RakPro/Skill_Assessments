@@ -1,9 +1,11 @@
-import React, { useReducer } from "react";
+import React, { useContext, useReducer, useState } from "react";
 import styles from "./Registration.module.css";
 import googleLogo from "../../assets/googleLogo.svg";
 import FirebaseAuth from "./FirebaseAuth";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 
+// const authStatus = useSelector((state) => state.userData.authStatus);
 // Import the functions you need from the SDKs you need
 
 // import Registration.module.css as styles from
@@ -15,6 +17,8 @@ import { Link } from "react-router-dom";
 const x = "str";
 
 const Registration: React.FC = () => {
+  const [authStatus, setAuthStatus] = useState("SignUp");
+
   const initialState: { [key: string]: string } = {
     email: "",
     password: "",
@@ -42,7 +46,6 @@ const Registration: React.FC = () => {
   const [formData, dispatch] = useReducer(formReducer, initialState);
 
   // console.log(formData);
-  const authStatus = "SignUp";
   return (
     <div className={styles["auth-body"]}>
       <div className={styles["auth-left"]}>
@@ -73,12 +76,17 @@ const Registration: React.FC = () => {
             >
               Sign In
             </button>
-            <p className={styles["logIn-text"]}>
+            <span className={styles["logIn-text"]}>
               {"Don't have account yet ?"}
-              <Link className={styles["logIn-text"]} to={"about"}>
+              <p
+                className={styles["logIn-text"]}
+                onClick={() => {
+                  setAuthStatus("SignUp");
+                }}
+              >
                 Sign Up
-              </Link>
-            </p>
+              </p>
+            </span>
           </div>
         )}
         {authStatus === "SignUp" && (
@@ -119,12 +127,17 @@ const Registration: React.FC = () => {
             >
               Sign Up
             </button>
-            <p className={styles["logIn-text"]}>
+            <span className={styles["logIn-text"]}>
               Already have an account?
-              <Link className={styles["logIn-text"]} to={"about"}>
+              <p
+                className={styles["logIn-text"]}
+                onClick={() => {
+                  setAuthStatus("SignIn");
+                }}
+              >
                 Log In
-              </Link>
-            </p>
+              </p>
+            </span>
           </div>
         )}
       </div>

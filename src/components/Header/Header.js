@@ -1,9 +1,13 @@
-import styles from './Header.module.css';
-import jsLogo from '../../img/logo/images.png';
-import React from 'react';
-import { Link } from 'react-router-dom';
+import styles from "./Header.module.css";
+import jsLogo from "../../img/logo/images.png";
+import React from "react";
+import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 function Header() {
+  const authStatus = useSelector((state) => state.userData.authStatus);
+
+  console.log(JSON.stringify(authStatus));
   return (
     <div className={styles["header"]}>
       <div className={styles["header-container"]}>
@@ -17,7 +21,13 @@ function Header() {
           <Link to={"tests"}>Tests </Link>
           <Link to={"test"}>Test </Link>
           <Link to={"about"}>About</Link>
-          <Link to={"profile"}>Profile</Link>
+          {authStatus === "SignUp" && (
+            <Link to={"registration"}>Registration</Link>
+          )}
+          {authStatus === "SignIn" && (
+            <Link to={"registration"}>Registration</Link>
+          )}
+          {authStatus === "Profile" && <Link to={"profile"}>Profile</Link>}
         </div>
       </div>
     </div>
