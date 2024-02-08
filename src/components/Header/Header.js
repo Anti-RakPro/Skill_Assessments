@@ -7,7 +7,7 @@ import { useSelector } from "react-redux";
 function Header() {
   const authStatus = useSelector((state) => state.userData.authStatus);
 
-  console.log(JSON.stringify(authStatus));
+  console.log(authStatus);
   return (
     <div className={styles["header"]}>
       <div className={styles["header-container"]}>

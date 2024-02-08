@@ -7,6 +7,7 @@ export const UserDataSlice = createSlice({
   reducers: {
     toggleAuthStatus: (state, action) => {
       console.log("action", action);
+      // TODO rework
       switch (action) {
         case "SignUp":
           return { ...state, authStatus: "SignUp" };

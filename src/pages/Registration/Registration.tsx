@@ -5,7 +5,6 @@ import FirebaseAuth from "./FirebaseAuth";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 
-// const authStatus = useSelector((state) => state.userData.authStatus);
 // Import the functions you need from the SDKs you need
 
 // import Registration.module.css as styles from
@@ -17,6 +16,8 @@ import { useSelector } from "react-redux";
 const x = "str";
 
 const Registration: React.FC = () => {
+  const authStatus2 = useSelector((state) => state.userData.authStatus);
+  console.log(authStatus2);
   const [authStatus, setAuthStatus] = useState("SignUp");
 
   const initialState: { [key: string]: string } = {
