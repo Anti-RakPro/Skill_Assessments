@@ -11,13 +11,14 @@ const initialArg = [
       { answer: "some answer1", isCorrectAnswer: false },
       { answer: "some answer2", isCorrectAnswer: false },
       { answer: "some answer3", isCorrectAnswer: false },
-      { answer: "some answer4", isCorrectAnswer: false }],
+      { answer: "some answer4", isCorrectAnswer: false },
+    ],
     codeAfterQuestion: null,
     question:
       " Q1. some question some question some question some question some question ?",
     reference:
-      "[Reference Javascript Comparison Operators](https://www.w3schools.com/js/js_operators.asp)"
-  }
+      "[Reference Javascript Comparison Operators](https://www.w3schools.com/js/js_operators.asp)",
+  },
 ];
 
 const defaultAnswerObj =
@@ -40,7 +41,7 @@ const answerHistory = [
   NaN,
   NaN,
   NaN,
-  NaN
+  NaN,
 ];
 let fifteenQuestions = [];
 let answerHasBeenSubmited = false;
@@ -51,7 +52,7 @@ function Tests() {
     defaultAnswerObj,
     defaultAnswerObj,
     defaultAnswerObj,
-    defaultAnswerObj
+    defaultAnswerObj,
   ]);
   const [test, setTest] = useReducer(postTest, initialArg);
 
@@ -65,8 +66,7 @@ function Tests() {
     // console.log(fifteenQuestions)
 
     setTest({ type: "START" });
-    return () => {
-    };
+    return () => {};
   }, []);
 
   function postCurrentAnswer(state, action) {
@@ -92,7 +92,7 @@ function Tests() {
               return {
                 ...defaultAnswerObj,
                 chosen: true,
-                showGray: true
+                showGray: true,
               };
             }
             return defaultAnswerObj;
@@ -125,7 +125,7 @@ function Tests() {
       defaultAnswerObj,
       defaultAnswerObj,
       defaultAnswerObj,
-      defaultAnswerObj
+      defaultAnswerObj,
     ];
   }
 
@@ -201,12 +201,15 @@ function Tests() {
             return (
               <div key={Math.random() * 1000}>
                 <div className={styles["test-answer"]}>
-                  <Checkbox obj={currentAnswer[index]} onChange={() => {
-                    setCurrentAnswer({ type: `check${index}` });
-                  }} />
+                  <Checkbox
+                    obj={currentAnswer[index]}
+                    onChange={() => {
+                      setCurrentAnswer({ type: `check${index}` });
+                    }}
+                  />
                   {currentObj.answer !== undefined && currentObj.answer}
                 </div>
-                <SeparateLine />
+                {test.answers.length - 1 !== index && <SeparateLine />}
               </div>
             );
           })}

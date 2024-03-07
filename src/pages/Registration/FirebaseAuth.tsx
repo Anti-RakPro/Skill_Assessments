@@ -21,7 +21,11 @@ const firebaseConfig = {
 // // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 // // const analytics = getAnalytics(app);
-// const db = getFirestore(app);
+const db = getFirestore(app);
+console.log("db", db);
+
+// some update firestore settings from tutorial video, that do not exist nowadays
+// db.settings({ timestampsInSnapshots: true });
 
 function FirebaseAuth(formData: object) {
   const auth = getAuth();
