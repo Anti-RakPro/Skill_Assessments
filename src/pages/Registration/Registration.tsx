@@ -1,7 +1,7 @@
 import React, { useContext, useReducer, useState } from "react";
 import styles from "./Registration.module.css";
 import googleLogo from "../../assets/googleLogo.svg";
-import FirebaseAuth from "./FirebaseAuth";
+import { CreateUser } from "./FirebaseAuth";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 
@@ -73,7 +73,7 @@ const Registration: React.FC = () => {
             <button
               className={styles["auth-sign-button"]}
               onClick={() => {
-                FirebaseAuth(formData);
+                CreateUser(formData);
               }}
             >
               Sign In
@@ -125,7 +125,7 @@ const Registration: React.FC = () => {
             <button
               className={styles["auth-sign-button"]}
               onClick={() => {
-                FirebaseAuth(formData);
+                CreateUser(formData);
               }}
             >
               Sign Up

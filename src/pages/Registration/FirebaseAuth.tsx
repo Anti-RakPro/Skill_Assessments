@@ -27,7 +27,7 @@ console.log("db", db);
 // some update firestore settings from tutorial video, that do not exist nowadays
 // db.settings({ timestampsInSnapshots: true });
 
-function FirebaseAuth(formData: object) {
+export function CreateUser(formData: object) {
   const auth = getAuth();
   createUserWithEmailAndPassword(auth, formData.email, formData.password)
     .then((userCredential) => {
@@ -43,4 +43,4 @@ function FirebaseAuth(formData: object) {
   console.log("getAuth()", getAuth());
 }
 
-export default FirebaseAuth;
+// export default CreateUser;
