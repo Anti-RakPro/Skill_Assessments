@@ -1,6 +1,6 @@
 .header{
-    position: sticky;
-    top: 0;
+    /*position: sticky;*/
+    /*top: 0;*/
     background-color: #fff;
     height: 50px;
     border-bottom: 1px solid #ebebeb;
@@ -35,6 +35,9 @@
     margin-right: 20px;
 }
 
+.nav-bar{
+    direction: rtl;
+}
 
 .nav-bar a{
     padding: 0 10px;
@@ -44,4 +47,19 @@
 
 .nav-bar a:hover{
     font-weight: bold;
+}
+
+@media (max-width: 590px) {
+    .header-logo p{
+       display: none;
+
+    }
+}
+
+@media (max-width: 500px) {
+    .nav-bar a{
+        font-size: 16px;
+        padding: 0 5px;
+    }
+
 }

@@ -10,6 +10,7 @@ import Body from "./components/Body/Body";
 import Header from "./components/Header/Header";
 import Tests from "./components/Tests/Tests";
 import Registration from "./pages/Registration/Registration";
+import Profile from "./pages/Profile/Profile";
 
 // import Counter from "./components/Counter/ Counter";
 
@@ -30,7 +31,7 @@ function App() {
             path="/registration"
             element={<Registration />}
           />
-          <Route id="profile" path="/profile" element={"Profile"} />
+          <Route id="profile" path="/profile" element={<Profile />} />
           <Route path="*" element="page not found" />
         </Routes>
       </Body>

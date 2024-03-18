@@ -50,6 +50,7 @@ const Registration: React.FC = () => {
   return (
     <div className={styles["auth-body"]}>
       <div className={styles["auth-left"]}>
+        {/*SignIn*/}
         {authStatus === "SignIn" && (
           <div className={styles["auth-singUp"]}>
             <h2 className={styles["auth-title"]}>Sign In to continue</h2>
@@ -90,6 +91,7 @@ const Registration: React.FC = () => {
             </span>
           </div>
         )}
+        {/*SignUp*/}
         {authStatus === "SignUp" && (
           <div className={styles["auth-singIn"]}>
             <h2 className={styles["auth-title"]}>Sign Up to continue</h2>

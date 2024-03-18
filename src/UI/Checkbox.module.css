@@ -2,26 +2,29 @@
     display: inline-block ;
     height: 25px;
     width: 25px;
-    border: 2px solid gray;
+    border: 2px solid #808080FF;
     border-radius: 50%;
     margin: 0 10px;
     cursor: pointer;
 }
 
 .showGray{
-    height: 12px;
-    width: 12px;
-    border: 8px solid gray;
+    /*height: 12px;*/
+    /*width: 12px;*/
+    background-color: gray ;
+    /*border: 8px solid #808080FF;*/
 }
 
 .showGreen{
-    height: 12px;
-    width: 12px;
-    border: 8px solid green;
+    /*height: 12px;*/
+    /*width: 12px;*/
+    background-color: green ;
+    /*border: 8px solid green;*/
 }
 
 .showRed{
-    height: 12px;
-    width: 12px;
-    border: 8px solid red;
+    /*height: 12px;*/
+    /*width: 12px;*/
+    background-color: red;
+    /*border: 8px solid red;*/
 }

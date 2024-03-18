@@ -28,6 +28,7 @@ function Header() {
             <Link to={"registration"}>Registration</Link>
           )}
           {authStatus === "Profile" && <Link to={"profile"}>Profile</Link>}
+          <Link to={"profile"}>Profile2</Link>
         </div>
       </div>
     </div>
