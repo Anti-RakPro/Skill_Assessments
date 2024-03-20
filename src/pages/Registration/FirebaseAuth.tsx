@@ -44,6 +44,5 @@ export function CreateUser(formData: object) {
 }
 
 export function LogInUser() {
-  console.log("");
   return "";
 }
