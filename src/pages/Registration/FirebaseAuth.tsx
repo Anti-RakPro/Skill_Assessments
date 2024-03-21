@@ -43,4 +43,6 @@ export function CreateUser(formData: object) {
   console.log("getAuth()", getAuth());
 }
 
-export function LogInUser() {}
+export function LogInUser() {
+  return "";
+}
