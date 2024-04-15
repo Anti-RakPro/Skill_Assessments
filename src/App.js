@@ -8,7 +8,7 @@ import { Routes, Route, Link } from "react-router-dom";
 import React from "react";
 import Body from "./components/Body/Body";
 import Header from "./components/Header/Header";
-import Tests from "./components/Tests/Tests";
+import Tests from "./pages/Tests/Tests";
 import Registration from "./pages/Registration/Registration";
 import Profile from "./pages/Profile/Profile";
 
