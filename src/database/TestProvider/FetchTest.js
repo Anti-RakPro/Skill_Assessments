@@ -1,11 +1,11 @@
-import jsAll from '../questions/js/javascript-quiz-final';
+import jsAll from "../js/javascript-quiz-final";
 
 function reformatToArr(str) {
   console.log(str);
 
   const arr = str
-    .replace(/[\r\n]/gm, '')
-    .split('####')
+    .replace(/[\r\n]/gm, "")
+    .split("####")
     .slice(1)
     .map((str) => {
       const result = {};
@@ -26,13 +26,13 @@ function reformatToArr(str) {
       }
 
       let splitingAnswersStr = answersPart;
-      // console.log('all questions',splitingAnswersStr )
+
       for (let i = 0; i < 6; i++) {
         let nextSearch = splitingAnswersStr.slice(5).search(/- . .|- .x./gm);
 
         if (nextSearch !== -1) {
           const potentialAnswer = splitingAnswersStr.slice(0, nextSearch + 5);
-          const isCodeInAnswer = potentialAnswer.search('```js');
+          const isCodeInAnswer = potentialAnswer.search("```js");
           if (isCodeInAnswer !== -1) {
             answers.push({
               answer: potentialAnswer.slice(0, isCodeInAnswer),
@@ -47,9 +47,9 @@ function reformatToArr(str) {
           splitingAnswersStr = splitingAnswersStr.slice(nextSearch + 5);
         } else {
           // TODO erors is last answer. when reference present code works fine, when on present its cuts of last question
-          let isReferenceInAnswer = splitingAnswersStr.search(['Reference']);
+          let isReferenceInAnswer = splitingAnswersStr.search(["Reference"]);
           let potentialAnswer = splitingAnswersStr;
-          const isCodeInAnswer = potentialAnswer.search('```js');
+          const isCodeInAnswer = potentialAnswer.search("```js");
           if (isReferenceInAnswer !== -1) {
             references.push(splitingAnswersStr.slice(isReferenceInAnswer - 1));
             potentialAnswer = splitingAnswersStr.slice(
@@ -88,7 +88,7 @@ function reformatToArr(str) {
             answer: obj.answer.slice(6),
           };
         }
-        console.log('somthing went wrong, search index not -1 or 0');
+        console.log("somthing went wrong, search index not -1 or 0");
         return obj;
       });
 
@@ -112,7 +112,7 @@ function reformatToArr(str) {
 }
 
 function FetchTest() {
-  let fifteenQuestions = 'no no no';
+  let fifteenQuestions = "no no no";
 
   function getRandomElementsFromArray(arr, numElements) {
     // Shuffle the original array

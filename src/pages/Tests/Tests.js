@@ -1,5 +1,5 @@
 import styles from "./Tests.module.css";
-import FetchTest from "../../TestProvider/FetchTest";
+import FetchTest from "../../database/TestProvider/FetchTest";
 import { useState, useEffect, useReducer } from "react";
 import Checkbox from "../../UI/Checkbox";
 import TestFooter from "./TestFooter";

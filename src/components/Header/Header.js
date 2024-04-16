@@ -1,5 +1,5 @@
 import styles from "./Header.module.css";
-import jsLogo from "../../img/logo/js.png";
+import jsLogo from "../../assets/logo/js.png";
 import React from "react";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
