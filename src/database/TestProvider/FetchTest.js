@@ -104,7 +104,7 @@ function reformatToArr(str) {
 
       result.reference = references;
 
-      // console.log(result)
+      // console.log(result);
       return result;
     });
 
